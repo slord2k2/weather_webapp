@@ -6,9 +6,9 @@ require('dotenv').config()
 const app=express();
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(express.static('public'));
 app.get("/",function (req,res) {
-    res.sendFile(__dirname+ "/Index.html");      
+    res.render("input");      
 });
 
 
@@ -24,18 +24,26 @@ app.post("/",function (req,res) {
             const weatherData=JSON.parse(data)
             const temp=weatherData.main.temp
             const weatherDescription=weatherData.weather[0].description
-            const icon=weatherData.weather[0].icon
+            const windspeed=weatherData.wind.speed;
+            const icon=weatherData.weather[0].icon;
+            const humidity=weatherData.main.humidity;
             const imageurl="https://openweathermap.org/img/wn/"+icon+"@2x.png"
-            res.write("<h1>Temp in "+ query+" is :" +temp +"</h1>");
-            res.write("<img src="+imageurl+"></img>");
-            res.write("<h2>The Weather is currenlty: "+weatherDescription +" </h2>");
-            res.send();
+            // res.write("<h1>Temp in "+ query+" is :" +temp +"</h1>");
+            // res.write("<img src="+imageurl+"></img>");
+            // res.write("<h2>The Weather is currenlty: "+weatherDescription +" </h2>");
+            // res.send();
+
+            res.render("result",{temperature :temp,description:weatherDescription,rain:imageurl,humidity:humidity,wind:windspeed})
+
+
+
+
         })
 })
 })
 
     // 
-    //    
+    //    main.humidity
     
 
 
