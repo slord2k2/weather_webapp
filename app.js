@@ -4,7 +4,7 @@ const bodyParser=require("body-parser");
 require('dotenv').config()
 
 const app=express();
-
+app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/",function (req,res) {
@@ -37,7 +37,6 @@ app.post("/",function (req,res) {
     // 
     //    
     
-
 
 
 
