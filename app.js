@@ -1,12 +1,20 @@
 const express=require("express");
 const https= require("https");
 const bodyParser=require("body-parser");
-require('dotenv').config()
-
+require('dotenv').config();
 const app=express();
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'));
+app.use(express.static("public"));
+
+
+
+
+
+
+
+
+
 app.get("/",function (req,res) {
     res.render("input");      
 });
@@ -52,10 +60,14 @@ app.post("/",function (req,res) {
 
 
 
+app.set('port',(process.env.PORT || 3000));
+
+app.listen(app.get('port'),()=>{
+    console.log("Server started on Port "+app.get("port"));
+});
 
 
 
-
-app.listen(3000,function () {
-    console.log("Sever is running at port 3000");
-})
+// app.listen(3000,function () {
+//     console.log("Sever is running at port 3000");
+// })
