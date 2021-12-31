@@ -107,3 +107,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
+footer{
+  display: flex;
+}
+.justify-center{
+  justify-content: center;
+  align-items: center;
+}

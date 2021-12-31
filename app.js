@@ -28,7 +28,8 @@ app.post("/",function (req,res) {
         // console.log(response.statusCode);
         response.on("data",function (data) {
             const weatherData=JSON.parse(data)
-            const temp=weatherData.main.temp
+            if (weatherData.main.temp == null) return res.sendStatus(404);
+            const temp=weatherData.main.temp;
             const weatherDescription=weatherData.weather[0].description
             const windspeed=weatherData.wind.speed;
             const icon=weatherData.weather[0].icon;
@@ -41,18 +42,12 @@ app.post("/",function (req,res) {
 
             res.render("result",{temperature :temp,description:weatherDescription,rain:imageurl,humidity:humidity,wind:windspeed})
 
-
+            
 
 
         })
 })
 })
-
-    // 
-    //    main.humidity
-    
-
-
 
 
 

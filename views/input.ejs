@@ -1,4 +1,5 @@
-<% include("partials/header") %> 
+<%- include("partials/header") -%> 
+<title>Weather</title>
 <link rel="stylesheet" href="/css/styles-input.css">  
 </head>
 <body>
@@ -6,22 +7,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <div class="login-page">
   <div class="form">
     <form class="login-form" action="/" method="POST">
-      <input type="text" id="cityname" name="city" placeholder="Enter City"/>
+      <input type="text" id="cityname" name="city" placeholder="Enter City" autocomplete="off"/>
       <button>Go!</button>
+      <p class="justify-center">  &copy Slord2k2 2021 </p>
     </form>
   </div>
 </div>
@@ -30,13 +21,5 @@
 
 
 
-
-
-
-
-
-
-
-
-
-  <% include("partials/footer") %> 
+<!-- 
+  <%- include("partials/footer") -%>  -->
